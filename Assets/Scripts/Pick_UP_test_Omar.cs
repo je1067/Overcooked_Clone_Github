@@ -57,7 +57,7 @@ public class Pick_UP_test_Omar : MonoBehaviour {
 			transform.position = player2.position;
 			dropped2 = false;
 
-		} else if (Input.GetKeyDown (KeyCode.O) && !dropped) {
+		} else if (Input.GetKeyDown (KeyCode.O) && !dropped2) {
 			GetComponent<Rigidbody> ().isKinematic = false;
 			transform.parent = null;
 			dropped2 = true;
