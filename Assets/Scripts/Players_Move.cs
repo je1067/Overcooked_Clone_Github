@@ -9,8 +9,10 @@ public class Players_Move : MonoBehaviour {
 	public float moveSpeed = 0.25f;
 	public float forceAmount = 700;
 	public float coolDown = 0.0f;
-
+	public KeyCode upKey, downKey, leftKey, rightKey, dashKey;
 	public float coolDownLimit = 1.5f;
+
+
 	void Start () {
 		//cc = GetComponent<CharacterController> ();
 		rb = GetComponent<Rigidbody>();
@@ -25,22 +27,47 @@ public class Players_Move : MonoBehaviour {
 
 
 
-		if (Input.GetKey(KeyCode.D)) {
+		if (Input.GetKey(rightKey)) {
 			//verMove = 1;
 			horMove = 1;
-		}else if (Input.GetKey(KeyCode.A)) {
-			//verMove = -1;
-			horMove = -1;
-		}
-		if (Input.GetKey(KeyCode.W)) {
-			//horMove = 1;
-			verMove = 1;
-		}else if (Input.GetKey(KeyCode.S)) {
-			//horMove = -1;
-			verMove =-1;
+
 		}
 
-		if(Input.GetKey(KeyCode.C) && coolDown > coolDownLimit){
+		if (Input.GetKey(leftKey)) {
+			//verMove = -1;
+			horMove = -1;
+
+		}
+		if (Input.GetKey(upKey)) {
+			//horMove = 1;
+			verMove = 1;
+
+		}
+		if (Input.GetKey(downKey)) {
+			//horMove = -1;
+			verMove =-1;
+
+		}
+
+		// Rotation control
+//		if (Input.GetKeyDown(KeyCode.D)) {
+//			//verMove = 1;
+//			horFace = 1;
+//		}else if (Input.GetKeyDown(KeyCode.A)) {
+//			//verMove = -1;
+//			horFace = -1;
+//		}
+//		if (Input.GetKeyDown(KeyCode.W)) {
+//			//horMove = 1;
+//			verMove = 1;
+//		}else if (Input.GetKeyDown(KeyCode.S)) {
+//			//horMove = -1;
+//			verMove =-1;
+//		}
+
+
+
+		if(Input.GetKey(dashKey) && coolDown > coolDownLimit){
 			//rb.AddForce(rb.transform.position * Time.deltaTime * forceAmount);
 			//rb.AddForce(movement * Time.deltaTime);
 			rb.AddForce(transform.forward * forceAmount);
@@ -77,14 +104,22 @@ public class Players_Move : MonoBehaviour {
 		//			transform.Translate(0f,0f,-moveSpeed);
 		//		}
 
+		// Move player 
+		Vector3 input = new Vector3 (horMove, 0f, verMove) * moveSpeed;
+		transform.position += input;
 
-		transform.position += new Vector3 (horMove, 0f, verMove) * moveSpeed;
 
-		Vector3 movement = new Vector3 (horMove,0.0f,verMove);
+		//Rotation
 
-		transform.rotation = Quaternion.LookRotation (movement);
+		//Vector3 rotation = new Vector3 (horFace,0.0f,verFace);
 
-		transform.Translate (movement * Time.deltaTime, Space.World);
+
+		if(input.magnitude > 0.01f){
+			transform.rotation = Quaternion.LookRotation (input);
+		}
+
+
+		//transform.Translate (rotation * Time.deltaTime, Space.World);
 
 
 
