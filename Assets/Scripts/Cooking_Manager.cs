@@ -60,8 +60,14 @@ public class Cooking_Manager : MonoBehaviour {
     private void OnTriggerStay(Collider coll)
     {
         //create separate references for 
+        
         //FullOnion detecting Cutting Board --> OnionOnCuttingBoard = true;
+        if (Input.GetKey(KeyCode.O) && coll.CompareTag("FullOnion"))
+        {
+
+        }
         //CutOnion detecting EmptyPot --> OnionsInPot = true;
+        
         //FullPot detecting EmptyPlate --> SoupDone = true;
     }
 
