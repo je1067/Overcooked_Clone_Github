@@ -106,9 +106,9 @@ public class Players_Move : MonoBehaviour {
 
 		// Move player 
 		Vector3 input = new Vector3 (horMove, 0f, verMove) * moveSpeed;
-		transform.position += input;
-
-
+		//transform.position += input;
+		//rb.AddForce(input * moveSpeed);
+		rb.velocity = input * moveSpeed;
 		//Rotation
 
 		//Vector3 rotation = new Vector3 (horFace,0.0f,verFace);
