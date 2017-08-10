@@ -21,7 +21,7 @@ public class OrderDone : MonoBehaviour {
         }
 	}
 
-    void OnTriggerStay(Collision coll)
+	void OnTriggerStay(Collider coll)
     {
         if (coll.gameObject.tag== "FinishedPlate")
         {

@@ -11,6 +11,7 @@ public class Players_Move : MonoBehaviour {
 	public float coolDown = 0.0f;
 	public KeyCode upKey, downKey, leftKey, rightKey, dashKey;
 	public float coolDownLimit = 1.5f;
+	public bool holding;
 
 
 	void Start () {
