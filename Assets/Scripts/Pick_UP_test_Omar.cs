@@ -12,6 +12,7 @@ public class Pick_UP_test_Omar : MonoBehaviour {
 
 	//private bool touched = false;
 	public bool dropped = true;
+	public bool dropped2 = true;
 
 
 	// Use this for initialization
@@ -31,7 +32,7 @@ public class Pick_UP_test_Omar : MonoBehaviour {
 		} else {
 			hasPlayer = false;
 		}
-		if (hasPlayer && Input.GetKeyDown (KeyCode.E) && dropped) {
+		if (hasPlayer && Input.GetKeyDown (KeyCode.E) && dropped && dis <= 1.0f) {
 			GetComponent<Rigidbody> ().isKinematic = true;
 			transform.parent = player;
 			transform.position = player.position;
@@ -50,16 +51,16 @@ public class Pick_UP_test_Omar : MonoBehaviour {
 		} else {
 			hasPlayer2 = false;
 		}
-		if (hasPlayer2 && Input.GetKeyDown (KeyCode.O) && dropped) {
+		if (hasPlayer2 && Input.GetKeyDown (KeyCode.O) && dropped2 && dis2 <= 1.0f ) {
 			GetComponent<Rigidbody> ().isKinematic = true;
 			transform.parent = player2;
 			transform.position = player2.position;
-			dropped = false;
+			dropped2 = false;
 
-		} else if (Input.GetKeyDown (KeyCode.O) && !dropped) {
+		} else if (Input.GetKeyDown (KeyCode.O) && !dropped2) {
 			GetComponent<Rigidbody> ().isKinematic = false;
 			transform.parent = null;
-			dropped = true;
+			dropped2 = true;
 
 		} 
 	}
