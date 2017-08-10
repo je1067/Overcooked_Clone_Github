@@ -30,7 +30,7 @@ public class Pick_UP_test_Omar : MonoBehaviour {
 		float dis2 = Vector3.Distance (gameObject.transform.position, player2.transform.position);
 
 
-		if (dis <= 0.4f) {
+		if (dis <= 0.5f) {
 			hasPlayer = true;
 		} else {
 			hasPlayer = false;
@@ -42,7 +42,7 @@ public class Pick_UP_test_Omar : MonoBehaviour {
 			transform.position = player.position;
 			dropped = false;
 
-		} else if (Input.GetKeyDown (KeyCode.E) && !dropped && !objectNear) {
+		} else if (Input.GetKeyDown (KeyCode.E) && !dropped ) {
 			GetComponent<Rigidbody> ().isKinematic = false;
 			transform.parent = null;
 			dropped = true;
@@ -52,7 +52,7 @@ public class Pick_UP_test_Omar : MonoBehaviour {
 		} 
 
 
-		if (dis2 <= 0.4f) {
+		if (dis2 <= 0.5f) {
 			hasPlayer2 = true;
 		} else {
 			hasPlayer2 = false;
@@ -65,7 +65,7 @@ public class Pick_UP_test_Omar : MonoBehaviour {
 			//play2.holding = true;
 
 
-		} else if (Input.GetKeyDown (KeyCode.O) && !dropped2  && !objectNear) {
+		} else if (Input.GetKeyDown (KeyCode.O) && !dropped2 ) {
 			GetComponent<Rigidbody> ().isKinematic = false;
 			transform.parent = null;
 			dropped2 = true;
@@ -79,7 +79,7 @@ public class Pick_UP_test_Omar : MonoBehaviour {
 
 
 		if(!col.CompareTag("Spawn_Point")){
-			objectNear = true;
+			//objectNear = true;
 		}
 
 
@@ -89,6 +89,6 @@ public class Pick_UP_test_Omar : MonoBehaviour {
 
 	void OnTriggerExit(Collider col){
 		
-		objectNear = false;
+		//objectNear = false;
 	}
 }
