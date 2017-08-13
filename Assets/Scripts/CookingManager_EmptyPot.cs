@@ -20,14 +20,22 @@ public class CookingManager_EmptyPot : MonoBehaviour {
            FullPot.transform.parent.tag = "FullPot";
             EmptyPot.SetActive(false);
             FullPot.SetActive(true);
+            Destroy(CutOnion);
+            Debug.Log("Onion is in pot");
             // set value ++
+        } else
+        {
+            FullPot.SetActive(false);
+            EmptyPot.SetActive(true);
+            
+
         }
     }
     private void OnTriggerStay(Collider coll)
     {
         if (OnionInPot == false)
         {
-            if (Input.GetKey(KeyCode.E) && coll.CompareTag("Player"))
+            if (Input.GetKey(KeyCode.E) && coll.CompareTag("CutOnionTrigger"))
             {
                 OnionInPot = true;
                 Debug.Log("Collision detected (player and Pot)");
@@ -39,11 +47,12 @@ public class CookingManager_EmptyPot : MonoBehaviour {
                     Debug.Log("cutOnion has been destroyed");
                 }
             }
-            if (Input.GetKey(KeyCode.O) && coll.CompareTag("Player"))
+            if (Input.GetKey(KeyCode.O) && coll.CompareTag("CutOnionTrigger") )
             {
                 OnionInPot = true;
                 Debug.Log("Collision detected (player and Pot)");
-                GameObject cutOnion = coll.gameObject.GetComponentInChildren<Pick_UP_test_Omar>().gameObject;
+                GameObject cutOnion = 
+                    coll.gameObject.GetComponentInChildren<Pick_UP_test_Omar>().gameObject;
 
                 if (cutOnion.CompareTag("CutOnion") && cutOnion != null)
                 {
@@ -51,6 +60,12 @@ public class CookingManager_EmptyPot : MonoBehaviour {
                     Debug.Log("cutOnion has been destroyed");
                 }
             }
+            if (Input.GetKey(KeyCode.E) && coll.CompareTag("FullOnion"))
+            {
+                OnionInPot = false;
+                Debug.Log("Onion is not in pot");
+            }
+              
         }
     }
 }
