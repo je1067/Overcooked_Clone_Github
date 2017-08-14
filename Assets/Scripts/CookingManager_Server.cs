@@ -15,21 +15,29 @@ public class CookingManager_Server : MonoBehaviour {
 		if (SoupIsDelivered == true)
         {
             //SoupPlate.SetActive(false);
-            Destroy(SoupPlate);
+             //Destroy();
             //Increase Score
+            Debug.Log("Soup recieved");
         }
 	}
-    private void OnTriggerEnter(Collider coll)
+    private void OnTriggerStay(Collider coll)
     {
-
-        if (Input.GetKey(KeyCode.O) && coll.CompareTag("SoupPlate"))
+        if (SoupIsDelivered == false)
         {
-            SoupIsDelivered = true;
+            if (Input.GetKey(KeyCode.O) && coll.CompareTag("SoupPlate"))
+            {
+                SoupIsDelivered = true;
+                Debug.Log("Finished Soup plate has been delivered");
+                GameObject completedSoup = coll.gameObject;
+                Destroy(coll.gameObject);
+            }
+            if (Input.GetKey(KeyCode.E) && coll.CompareTag("SoupPlate"))
+            {
+                SoupIsDelivered = true;
+                Debug.Log("Finished Soup plate has been delivered");
+                GameObject completedSoup = coll.gameObject;
+                Destroy(coll.gameObject);
+            }
         }
-        if (Input.GetKey(KeyCode.E) && coll.CompareTag("SoupPlate"))
-        {
-            SoupIsDelivered = true;
-        }
-
     }
 }
